@@ -1,19 +1,21 @@
 from textblob import TextBlob
 import pandas as pd
 
-
-def analyze_sentiment(text: str) -> str:
+def analyze_sentiment(text: str):
     blob = TextBlob(text)
     polarity = blob.sentiment.polarity
     if polarity > 0.5:
-        return 'positive'
+        label = 'positive'
     elif polarity < -0.5:
-        return 'negative'
+        label = 'negative'
     else:
-        return 'neutral'
-
+        label = 'neutral'
+    return label, polarity
 
 def add_sentiment_column(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
-    df['sentiment'] = df['review'].apply(analyze_sentiment)
+    df['review'] = df['review'].fillna('').astype(str)
+    results = df['review'].apply(analyze_sentiment)
+    df['sentiment_label'] = results.apply(lambda x: x[0])
+    df['sentiment_score'] = results.apply(lambda x: x[1])
     return df
