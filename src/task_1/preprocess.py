@@ -54,7 +54,7 @@ def add_review_id(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 def save_cleaned_reviews(df: pd.DataFrame, path: str ="../data/Cleaned/reviews_cleaned.csv") -> None:
-    columns = ['review_id', 'review', 'rating', 'review_text_clean', 'sentiment_label', 'sentiment_score', 'identified_theme']
+    columns = ['review_id', 'review', 'rating', 'bank', 'review_text_clean', 'sentiment_label', 'sentiment_score', 'identified_theme']
     df.to_csv(path, columns=columns, index=False)
 
 def save_raw_reviews(df: pd.DataFrame) -> None:
