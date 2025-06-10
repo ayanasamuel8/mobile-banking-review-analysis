@@ -23,6 +23,7 @@ for _, row in df.iterrows():
         INSERT INTO reviews (
             bank_id,
             review_text,
+            rating,
             review_text_clean,
             sentiment_label,
             sentiment_score,
@@ -34,6 +35,7 @@ for _, row in df.iterrows():
         bank_id,
         row['review'],
         row['review_text_clean'],
+        row['rating'],
         row.get('sentiment_label'),
         row.get('sentiment_score'),
         row.get('identified_theme')
