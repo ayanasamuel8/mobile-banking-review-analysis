@@ -34,7 +34,7 @@ data-analysis-project/
 
 1. **Clone the repository:**
    ```
-   git clone <repository-url>
+   git clone https://github.com/ayanasamuel8/mobile-banking-review-analysis.git
    cd data-analysis-project
    ```
 
